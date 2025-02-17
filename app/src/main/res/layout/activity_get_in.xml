@@ -34,7 +34,7 @@
         android:layout_width="219dp"
         android:layout_height="wrap_content"
         android:text="@string/button_start"
-        android:background="@color/yellow"
+        android:background="@drawable/round_button"
         android:textColor="@color/grayblack"
         android:textStyle="bold"
         android:textSize="18sp"
