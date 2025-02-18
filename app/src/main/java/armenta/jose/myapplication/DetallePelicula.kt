@@ -1,6 +1,8 @@
 package armenta.jose.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -8,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class DetallePelicula : AppCompatActivity() {
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_pelicula)
@@ -24,7 +27,7 @@ class DetallePelicula : AppCompatActivity() {
         var title = ""
 
         if (bundle != null) {
-            movieSeats = bundle.getInt("numberSeats")
+            movieSeats = bundle.getInt("numberSeats",20)
             title = bundle.getString("titulo") ?: ""
             ivPelicula.setImageResource(bundle.getInt("header"))
             tvTitulo.text = title
@@ -33,14 +36,21 @@ class DetallePelicula : AppCompatActivity() {
             id = bundle.getInt("pos")
         }
 
-        if (movieSeats == 0) {
+        val sharedPreferences = getSharedPreferences("reservas", MODE_PRIVATE)
+        val claveAsientos = "asientos_reservados_$title"
+
+        val reservedSeats = sharedPreferences.getStringSet(claveAsientos, mutableSetOf())?.size ?: 0
+        val availableSeats = movieSeats - reservedSeats
+
+        seatsLeft.text = "$availableSeats seats available"
+
+        if (availableSeats == 0) {
             buyTickets.isEnabled = false
         } else {
             buyTickets.setOnClickListener {
                 val intent = Intent(this, SeatSelection::class.java)
-                    intent.putExtra("id", id)
-                    intent.putExtra("name", title)
-
+                intent.putExtra("id", id)
+                intent.putExtra("name", title)
                 startActivity(intent)
             }
         }

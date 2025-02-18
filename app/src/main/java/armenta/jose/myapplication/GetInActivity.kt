@@ -14,6 +14,11 @@ class GetInActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_get_in)
 
+        val sharedPreferences = getSharedPreferences("reservas", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+
         val button: Button = findViewById(R.id.button_get_started) as Button
 
         button.setOnClickListener{

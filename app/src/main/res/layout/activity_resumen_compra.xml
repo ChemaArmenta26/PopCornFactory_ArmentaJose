@@ -3,25 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/grayblack"
     android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_resumen_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/resumen"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/yellow"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/yellow"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/movieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/seatNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/letra"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/customerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/letra"
+        android:layout_marginBottom="20dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continuar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:textColor="@color/grayblack"
+        android:text="@string/btnContinuar"
+        android:paddingHorizontal="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

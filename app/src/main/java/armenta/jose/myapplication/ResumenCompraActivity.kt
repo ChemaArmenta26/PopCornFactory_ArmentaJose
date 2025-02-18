@@ -1,7 +1,9 @@
 package armenta.jose.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,12 +16,18 @@ class ResumenCompraActivity : AppCompatActivity() {
         val movieTitle: TextView = findViewById(R.id.movieTitle)
         val seatNumber: TextView = findViewById(R.id.seatNumber)
         val customerName: TextView = findViewById(R.id.customerName)
+        val continuar: Button = findViewById(R.id.continuar)
 
         val bundle = intent.extras
         if (bundle != null) {
             movieTitle.text = "Movie: " + bundle.getString("movieName")
             seatNumber.text = "Seat: " + bundle.getString("seat")
             customerName.text = "Customer: " + bundle.getString("customer")
+        }
+
+        continuar.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
